@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: responses
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer          not null
+#  answer_choice_id :integer          not null
+#
+
 
 class Response < ActiveRecord::Base
   validates :user_id, presence: true
@@ -35,7 +44,7 @@ class Response < ActiveRecord::Base
 
   def author_cannot_respond_to_question
     if poll.author_id == user_id
-      errors[:user_id] << 'Author cannot respons to own pull'
+      errors[:user_id] << 'Author cannot respond to own poll'
     end
   end
 end
